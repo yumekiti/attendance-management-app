@@ -1,22 +1,35 @@
-import { useEffect, useState } from "react";
-import "./App.css";
+import React from "react";
+import "./index.css";
+
+import { WifiConnections } from "./types/wifiConnections";
+import { Routes, Route } from "react-router-dom";
+import Home from "./components/pages/Home";
+import Settings from "./components/pages/Settings";
+import Rooms from "./components/pages/Rooms";
+import AddRoom from "./components/pages/AddRoom";
 
 export const App = () => {
-  const [count, setCount] = useState(0);
-  const [uuid, setUuid] = useState<string>('');
+  // const [networks, setNetworks] = useState<WifiConnections>([]);
 
-  const func = async () => {
-    const response = await (window as any).si.system()
-    setUuid(response.uuid)
-  }
+  // const func = async () => {
+  //   const response = await (window as any).si.wifiConnections()
+  //   console.log(response);
+  //   setNetworks(response)
+  // }
 
-  useEffect(() => { func() }, [])
+  // useEffect(() => {
+  //   func()
+  //   setInterval(() => {
+  //     func()
+  //   }, 3000)
+  // }, [])
 
   return (
-    <div className="container">
-      <div>{uuid}</div>
-      <h1>{count}</h1>
-      <button onClick={() => setCount((count) => count + 1)}>Count</button>
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/rooms" element={<Rooms />} />
+      <Route path="/settings" element={<Settings />} />
+      <Route path="/room-add" element={<AddRoom />} />
+    </Routes>
   );
 };

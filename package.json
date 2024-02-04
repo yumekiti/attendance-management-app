@@ -15,7 +15,8 @@
 		"build": "rimraf dist && cross-env NODE_ENV=\"production\" webpack --progress",
 		"build:electron": "electron-packager . --overwrite",
 		"dev:webpack": "cross-env NODE_ENV=\"development\" webpack --progress",
-		"dev:electron": "wait-on dist/main.js dist/index.html && electronmon ."
+		"dev:electron": "wait-on dist/main.js dist/index.html && electronmon .",
+		"format": "prettier --write \"src/**/*.{ts,tsx}\""
 	},
 	"electronmon": {
 		"patterns": [
@@ -23,8 +24,15 @@
 		]
 	},
 	"dependencies": {
+		"@apollo/client": "^3.9.2",
+		"@reduxjs/toolkit": "^2.1.0",
+		"antd": "^5.13.3",
+		"graphql": "^16.8.1",
+		"prettier": "^3.2.5",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
+		"react-redux": "^9.1.0",
+		"react-router-dom": "^6.22.0",
 		"systeminformation": "^5.21.22"
 	},
 	"devDependencies": {
